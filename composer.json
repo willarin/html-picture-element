@@ -1,0 +1,36 @@
+{
+    "name": "deitsolutions/html-picture-element",
+    "description": "Picture element ",
+    "keywords": [
+        "php",
+        "html",
+        "picture",
+        "element"
+    ],
+    "type": "php-extension",
+    "homepage": "https://github.com/deitsolutions/html-picture-element",
+    "authors": [
+        {
+            "name": "Dmitriy Evdokimov",
+            "email": "dmitriy@deitsolutions.com",
+            "homepage": "http://almeyda.biz",
+            "role": "Developer"
+        },
+        {
+            "name": "Ramil Vildanov",
+            "email": "ramil.vildanov@gmail.com",
+            "homepage": "http://almeyda.biz",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.0",
+        "deitsolutions/versioning": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "deitsolutions\\html-picture-element\\": ""
+        }
+    }
+}
