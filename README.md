@@ -1,6 +1,6 @@
 # Description
 
-A simple PHP class to generate the HTML <picture> element 
+A simple PHP class to generate the HTML *<picture*> element 
 
 # Installation
 
