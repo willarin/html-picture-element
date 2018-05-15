@@ -26,7 +26,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.0",
-        "deitsolutions/versioning": "dev-master"
+        "deitsolutions/fileversion": "dev-master"
     },
     "autoload": {
         "psr-4": {

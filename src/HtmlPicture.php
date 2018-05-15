@@ -2,7 +2,7 @@
 
 namespace deitsolutions\htmlpicture\src;
 
-use deitsolutions\versioning\src\FileVersioning;
+use deitsolutions\versioning\src\FileVersion;
 
 class HtmlPicture
 {
@@ -48,11 +48,11 @@ class HtmlPicture
         foreach ($this->sourceTypes as $type) {
             $sourceSrc = str_replace('.' . $srcParts['extension'], '.' . $type, $this->src);
             if (file_exists(__DIR__ . $sourceSrc)) {
-                $html .= '<source srcset = "' . FileVersioning::set($sourceSrc) . '" type = "image/' . $type . '">';
+                $html .= '<source srcset = "' . FileVersion::set($sourceSrc) . '" type = "image/' . $type . '">';
             }
         }
 
-        $html .= '<img src="' . FileVersioning::set($this->src) . '" ' . $attributesString . '>' . '</picture>';
+        $html .= '<img src="' . FileVersion::set($this->src) . '" ' . $attributesString . '>' . '</picture>';
 
         return $html;
     }
