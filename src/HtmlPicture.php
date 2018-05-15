@@ -2,57 +2,57 @@
 
 namespace deitsolutions\htmlpicture\src;
 
-use deitsolutions\versioning\src\FileVersion;
+use deitsolutions\fileversion\src\FileVersion;
 
 class HtmlPicture
 {
     /**
-     * @var string src attribute of image tag
+     * @var string src attribute of the image tag
      */
-    public $src = '';
+    public static $src = '';
     /**
      * @var array image tag attributes
      */
-    public $attributes = ['alt' => ''];
+    public static $attributes = ['alt' => ''];
     /**
      * @var array image types to be collected into picture sources
      */
-    public $sourceTypes = ['webp', 'jp2', 'jpx'];
+    public static $sourceTypes = ['webp', 'jp2', 'jpx'];
 
     /**
      * get picture element
      * @param $config
      * @return string
      */
-    public function get($config)
+    public static function get($config)
     {
         //populate properties with configuration array
         if (is_array($config)) {
             foreach ($config as $key => $value) {
-                if (isset($this->{$key})) {
-                    $this->{$key} = $value;
+                if (isset(self::${$key})) {
+                    self::${$key} = $value;
                 }
             }
         }
 
-        $srcParts = pathinfo($this->src);
+        $srcParts = pathinfo(self::$src);
 
         //collect attributes into string
         $attributesString = '';
-        foreach ($this->attributes as $name => $value) {
+        foreach (self::$attributes as $name => $value) {
             $attributesString .= ' ' . $name . '="' . $value . '"';
         }
 
         //form picture tag
         $html = '<picture>';
-        foreach ($this->sourceTypes as $type) {
-            $sourceSrc = str_replace('.' . $srcParts['extension'], '.' . $type, $this->src);
-            if (file_exists(__DIR__ . $sourceSrc)) {
+        foreach (self::$sourceTypes as $type) {
+            $sourceSrc = str_replace('.' . $srcParts['extension'], '.' . $type, self::$src);
+            if (file_exists(@$_SERVER['DOCUMENT_ROOT'] . $sourceSrc)) {
                 $html .= '<source srcset = "' . FileVersion::set($sourceSrc) . '" type = "image/' . $type . '">';
             }
         }
 
-        $html .= '<img src="' . FileVersion::set($this->src) . '" ' . $attributesString . '>' . '</picture>';
+        $html .= '<img src="' . FileVersion::set(self::$src) . '" ' . $attributesString . '>' . '</picture>';
 
         return $html;
     }
