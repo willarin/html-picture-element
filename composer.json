@@ -1,6 +1,6 @@
 {
     "name": "deitsolutions/html-picture-element",
-    "description": "Picture element ",
+    "description": "Generates picture html tag with different types of sources",
     "keywords": [
         "php",
         "html",

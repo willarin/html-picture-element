@@ -1,32 +1,43 @@
 <?php
+/**
+ * @copyright Copyright (c) 2018 Almeyda LLC
+ * @link https://github.com/deitsolutions/html-picture-element.git
+ *
+ * The full copyright and license information is stored in the LICENSE file distributed with this source code.
+ */
 
 namespace deitsolutions\htmlpicture\src;
 
 use deitsolutions\fileversion\src\FileVersion;
 
+/**
+ * Class HtmlPicture renders picture tag according HTML specifications
+ */
 class HtmlPicture
 {
     /**
      * @var string src attribute of the image tag
      */
     public static $src = '';
+    
     /**
      * @var array image tag attributes
      */
     public static $attributes = ['alt' => ''];
+    
     /**
-     * @var array image types to be collected into picture sources
+     * @var array image types to be collected and rendered into picture tag
      */
     public static $sourceTypes = ['webp', 'jp2', 'jpx'];
 
     /**
-     * get picture element
+     * form picture element
      * @param $config
      * @return string
      */
     public static function get($config)
     {
-        //populate properties with configuration array
+        //populate properties from configuration array
         if (is_array($config)) {
             foreach ($config as $key => $value) {
                 if (isset(self::${$key})) {
@@ -34,7 +45,7 @@ class HtmlPicture
                 }
             }
         }
-
+    
         $srcParts = pathinfo(self::$src);
 
         //collect attributes into string
