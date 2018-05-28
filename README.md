@@ -37,9 +37,9 @@ $ php composer.phar update
 # Usage 
 
 ```
-\deitsolutions\htmlpicture\src\HtmlPicture::get($configPictureTag);
+\deitsolutions\htmlpicture\src\HtmlPicture::get($src, $attributes, $sourceTypes);
 ```
-Where $configPictureTag is an associative array contains the next keys:
+Where:
   - src - path to main image
   - sourceTypes - array of the image types to be collected into picture sources
   - attributes - "<image"> tag attributes
@@ -47,21 +47,30 @@ Where $configPictureTag is an associative array contains the next keys:
 ### Example of usage:
 
 ```
-\deitsolutions\htmlpicture\src\HtmlPicture::get([
-    'src' => 'path/to/image.png'),
-    'sourceTypes' => ['webp', 'jp2', 'jpx'],
-    'attributes' => [
-        'alt' => 'Image alt'
-    ],
+\deitsolutions\htmlpicture\src\HtmlPicture::get('path/to/image.png', ['alt' => 'Image alt'], ['webp', 'jp2', 'jpx']),
 ```
+
 
 This produces an output like
 
 ```
-\deitsolutions\htmlpicture\src\HtmlPicture::get([
-    'src' => 'path/to/image.png'),
-    'sourceTypes' => ['webp', 'jp2', 'jpx'],
-    'attributes' => [
-        'alt' => 'Image alt'
-    ],
+<picture>
+    <source srcset="path/to/image.webp?v=1527278990" type="image/webp">
+    <source srcset="path/to/image.jp2?v=1527278990" type="image/jp2">
+    <source srcset="path/to/image.jpx?v=1527278990" type="image/jpx">
+    <img src="path/to/image.png?v=1527278990" alt="Image alt">
+</picture>
+```
+
+
+You can define image types to be collected and rendered into picture tag once using a method setSouceTypes
+
+```
+\deitsolutions\htmlpicture\src\HtmlPicture::setSouceTypes(['webp', 'jp2', 'jpx']);
+
+...
+
+\deitsolutions\htmlpicture\src\HtmlPicture::get('path/to/image1.png'),
+
+\deitsolutions\htmlpicture\src\HtmlPicture::get('path/to/image2.png'),
 ```

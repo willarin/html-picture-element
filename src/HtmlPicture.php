@@ -16,54 +16,66 @@ use deitsolutions\fileversion\src\FileVersion;
 class HtmlPicture
 {
     /**
-     * @var string src attribute of the image tag
-     */
-    public static $src = '';
-    
-    /**
-     * @var array image tag attributes
-     */
-    public static $attributes = ['alt' => ''];
-    
-    /**
      * @var array image types to be collected and rendered into picture tag
      */
-    public static $sourceTypes = ['webp', 'jp2', 'jpx'];
+    public static $sourceTypes;
 
     /**
+     * @var array default image types
+     */
+    public static $defaultSourceTypes = ['webp', 'jp2', 'jpx'];
+
+    /**
+     * set image types
+     * @param $sourceTypes
+     */
+    public static function setSouceTypes($sourceTypes)
+    {
+        if ($sourceTypes) {
+            self::$sourceTypes = $sourceTypes;
+        } elseif (!self::$sourceTypes) {
+            self::$sourceTypes = self::$defaultSourceTypes;
+        }
+    }
+    /**
      * form picture element
-     * @param $config
+     * @param $src
+     * @param mixin $attributes
+     * @param mixin $sourceTypes
      * @return string
      */
-    public static function get($config)
+    public static function get($src, $attributes = false, $sourceTypes = false)
     {
-        //populate properties from configuration array
-        if (is_array($config)) {
-            foreach ($config as $key => $value) {
-                if (isset(self::${$key})) {
-                    self::${$key} = $value;
-                }
-            }
+        $documentRoot = @$_SERVER['DOCUMENT_ROOT'];
+
+        //check if the src file exists
+        if (!@file_exists($documentRoot . $src)) {
+            return '';
         }
-    
-        $srcParts = pathinfo(self::$src);
+
+        //populate properties from configuration array
+        self::setSouceTypes($sourceTypes);
+
+        $srcParts = pathinfo($src);
 
         //collect attributes into string
         $attributesString = '';
-        foreach (self::$attributes as $name => $value) {
-            $attributesString .= ' ' . $name . '="' . $value . '"';
+        if ($attributes && is_array($attributes)) {
+            foreach ($attributes as $name => $value) {
+                $attributesString .= ' ' . $name . '="' . $value . '"';
+            }
         }
 
         //form picture tag
         $html = '<picture>';
         foreach (self::$sourceTypes as $type) {
-            $sourceSrc = str_replace('.' . $srcParts['extension'], '.' . $type, self::$src);
-            if (file_exists(@$_SERVER['DOCUMENT_ROOT'] . $sourceSrc)) {
-                $html .= '<source srcset = "' . FileVersion::set($sourceSrc) . '" type = "image/' . $type . '">';
+            $sourceSrc = str_replace('.' . $srcParts['extension'], '.' . $type, $src);
+            if (file_exists($documentRoot . $sourceSrc)) {
+                $html .= '<source srcset = "' . FileVersion::get($sourceSrc) . '" type = "image/' . $type . '">';
             }
         }
 
-        $html .= '<img src="' . FileVersion::set(self::$src) . '" ' . $attributesString . '>' . '</picture>';
+        $html .= '<img src="' . FileVersion::get($src) . '" ' . $attributesString . '>' . '</picture>';
 
         return $html;
     }
