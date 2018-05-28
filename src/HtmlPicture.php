@@ -29,7 +29,7 @@ class HtmlPicture
      * set image types
      * @param $sourceTypes
      */
-    public static function setSouceTypes($sourceTypes)
+    public static function setSourceTypes($sourceTypes)
     {
         if ($sourceTypes) {
             self::$sourceTypes = $sourceTypes;
@@ -37,11 +37,12 @@ class HtmlPicture
             self::$sourceTypes = self::$defaultSourceTypes;
         }
     }
+    
     /**
      * form picture element
-     * @param $src
-     * @param mixin $attributes
-     * @param mixin $sourceTypes
+     * @param string $src
+     * @param mixed $attributes
+     * @param mixed $sourceTypes
      * @return string
      */
     public static function get($src, $attributes = false, $sourceTypes = false)
@@ -54,7 +55,7 @@ class HtmlPicture
         }
 
         //populate properties from configuration array
-        self::setSouceTypes($sourceTypes);
+        self::setSourceTypes($sourceTypes);
 
         $srcParts = pathinfo($src);
 

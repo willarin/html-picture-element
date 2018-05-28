@@ -41,9 +41,9 @@ $ php composer.phar update
 ```
 Where:
   - src - path to main image
-  - sourceTypes - array of the image types to be collected into picture sources
   - attributes - "<image"> tag attributes
-
+  - sourceTypes - array of the image types to be collected into picture sources
+  
 ### Example of usage:
 
 ```
