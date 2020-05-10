@@ -11,7 +11,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 Place **composer.phar** file in the same directory with **composer.json** file and run
 
 ```
-$ php composer.phar require deitsolutions/html-picture-element "dev-master"
+$ php composer.phar require solutlux/html-picture-element "dev-master"
 ```
 
 or add
@@ -21,7 +21,7 @@ or add
     ...
     "require": {
         ...
-        "deitsolutions/html-picture-element": "dev-master"
+        "solutlux/html-picture-element": "dev-master"
         ...
     }
     ...
@@ -37,7 +37,7 @@ $ php composer.phar update
 # Usage 
 
 ```
-\deitsolutions\htmlpicture\src\HtmlPicture::get($src, $attributes, $sourceTypes);
+\solutlux\htmlpicture\src\HtmlPicture::get($src, $attributes, $sourceTypes);
 ```
 Where:
   - src - path to main image
@@ -47,7 +47,7 @@ Where:
 ### Example of usage:
 
 ```
-\deitsolutions\htmlpicture\src\HtmlPicture::get('path/to/image.png', ['alt' => 'Image alt'], ['webp', 'jp2', 'jpx']),
+\solutlux\htmlpicture\src\HtmlPicture::get('path/to/image.png', ['alt' => 'Image alt'], ['webp', 'jp2', 'jpx']),
 ```
 
 
@@ -66,11 +66,11 @@ This produces an output like
 You can define image types to be collected and rendered into picture tag once using a method setSouceTypes
 
 ```
-\deitsolutions\htmlpicture\src\HtmlPicture::setSouceTypes(['webp', 'jp2', 'jpx']);
+\solutlux\htmlpicture\src\HtmlPicture::setSouceTypes(['webp', 'jp2', 'jpx']);
 
 ...
 
-\deitsolutions\htmlpicture\src\HtmlPicture::get('path/to/image1.png'),
+\solutlux\htmlpicture\src\HtmlPicture::get('path/to/image1.png'),
 
-\deitsolutions\htmlpicture\src\HtmlPicture::get('path/to/image2.png'),
+\solutlux\htmlpicture\src\HtmlPicture::get('path/to/image2.png'),
 ```

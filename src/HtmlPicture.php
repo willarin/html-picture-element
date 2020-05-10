@@ -1,14 +1,14 @@
 <?php
 /**
- * @copyright Copyright (c) 2018 Almeyda LLC
- * @link https://github.com/deitsolutions/html-picture-element.git
+ * @copyright Copyright (c) 2018 Solutlux LLC
+ * @link https://github.com/solutlux/html-picture-element.git
  *
  * The full copyright and license information is stored in the LICENSE file distributed with this source code.
  */
 
-namespace deitsolutions\htmlpicture\src;
+namespace solutlux\htmlpicture\src;
 
-use deitsolutions\fileversion\src\FileVersion;
+use solutlux\fileversion\src\FileVersion;
 
 /**
  * Class HtmlPicture renders picture tag according HTML specifications
