@@ -1,5 +1,5 @@
 {
-    "name": "solutlux/html-picture-element",
+    "name": "almeyda/html-picture-element",
     "description": "Generates picture html tag with different types of sources",
     "keywords": [
         "php",
@@ -9,29 +9,21 @@
     ],
     "type": "php-extension",
     "license": "BSD-3-Clause",
-    "homepage": "https://github.com/solutlux/html-picture-element",
     "authors": [
         {
             "name": "Dmitriy Evdokimov",
-            "email": "dmitriy@solutlux.com",
-            "homepage": "https://solutlux.com",
-            "role": "Developer"
-        },
-        {
-            "name": "Ramil Vildanov",
-            "email": "ramil.vildanov@gmail.com",
-            "homepage": "https://solutlux.com",
+            "email": "dmitriy@almeydahost.com",
             "role": "Developer"
         }
     ],
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.0",
-        "solutlux/fileversion": "dev-master"
+        "almeyda/fileversion": "*"
     },
     "autoload": {
         "psr-4": {
-            "solutlux\\htmlpicture\\": ""
+            "almeyda\\htmlpicture\\": ""
         }
     }
 }

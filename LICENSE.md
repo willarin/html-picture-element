@@ -1,6 +1,6 @@
 The automatic file version timestamp script is free software. It is released under the terms of the following BSD License.
 
-Copyright © 2018 by Solutlux LLC (https://solutlux.com)
+Copyright © 2018 by Almeyda LLC
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -13,7 +13,7 @@ are met:
    notice, this list of conditions and the following disclaimer in
    the documentation and/or other materials provided with the
    distribution.
- * Neither the name of Solutlux LLC nor the names of its
+ * Neither the name of Almeyda LLC nor the names of its
    contributors may be used to endorse or promote products derived
    from this software without specific prior written permission.
 
