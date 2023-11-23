@@ -19,12 +19,13 @@ class HtmlPicture
      * @var array image types to be collected and rendered into picture tag
      */
     public static $sourceTypes;
-
+    
     /**
      * @var array default image types
      */
-    public static $defaultSourceTypes = ['webp', 'jp2', 'jpx'];
-
+    public static $defaultSourceTypes = ['webp'];
+    //public static $defaultSourceTypes = ['webp', 'jp2', 'jpx'];
+    
     /**
      * set image types
      * @param $sourceTypes
